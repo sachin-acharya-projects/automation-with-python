@@ -38,7 +38,9 @@ def main(arguments: list):
     filename = os.path.basename(__name__)
     if filename in arguments[0]:
         arguments.pop(0) # removing filename -- main.py
-
+    if len(arguments) <= 0:
+        print(help_text)
+        sys.exit()
     arguments = list(arguments)
     if arguments.get(".help"):
         print(help_text)
