@@ -4,14 +4,18 @@ class list(list):
     def __init__(self, *args):
         super().__init__(args)
     def get(self, text_):
-        if not text_ in self[0]:
+        if not text_ in self:
             return False
         return True
     def getValue(self, elm, default = False, one_up=True):
-        if not elm in self[0]:
+        if not elm in self:
             return default
-        index = self[0].index(elm)
-        return self[0][index] if not one_up else self[0][index + 1]
+        index = self.index(elm)
+        try:
+            return self[index] if not one_up else self[index + 1]
+        except IndexError:
+            print("No value is provided to the argument %s" % elm)
+            sys.exit()
 def main(arguments: list):
     help_text = """
     syntax:
@@ -41,7 +45,7 @@ def main(arguments: list):
     if len(arguments) <= 0:
         print(help_text)
         sys.exit()
-    arguments = list(arguments)
+    arguments = list(*arguments)
     if arguments.get(".help"):
         print(help_text)
         sys.exit()
@@ -71,6 +75,7 @@ def main(arguments: list):
         #  svn export https://github.com/sachin-acharya-projects/automation-with-python/trunk --force
         print("It seems you have not download Tortoise SVN\nDownload Here: https://tortoisesvn.net/downloads.html")
     if file_path:
+        print("Executing file %s" % file_path)
         if '.py' in file_path:
             os.system("python %s" % file_path)
         else:
