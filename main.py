@@ -39,12 +39,13 @@ def main(arguments: list):
         arguments.remove(os.path.basename(__name__)) # removing filename -- main.py
     except ValueError:
         print(help_text)
+        sys.exit()
     arguments = list(arguments)
     if arguments.get(".help"):
         print(help_text)
         sys.exit()
     git_url = arguments[0]
-    if git_url == '':
+    if git_url == '' or git_url == None:
         print("URL is required")
         sys.exit()
     file_path = arguments.getValue("-e")
