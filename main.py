@@ -36,7 +36,9 @@ def main(arguments: list):
     """
 
     try:
-        arguments.remove(os.path.basename(__name__)) # removing filename -- main.py
+        filename = os.path.basename(__name__)
+        if filename in arguments[0]:
+            arguments.pop(0) # removing filename -- main.py
     except ValueError:
         print(help_text)
         sys.exit()
