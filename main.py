@@ -64,7 +64,7 @@ def main(arguments: list):
     if input("").lower() == 'exit':
         sys.exit()
     try:
-        output = subprocess.check_output("svn export %s %s" % (git_url, getPath), stderr=subprocess.STDOUT)
+        output = subprocess.check_output("svn export %s %s --force" % (git_url, getPath), stderr=subprocess.STDOUT)
     except subprocess.CalledProcessError:
         print("It seems you have not download Tortoise SVN\nDownload Here: https://tortoisesvn.net/downloads.html")
     if file_path:
