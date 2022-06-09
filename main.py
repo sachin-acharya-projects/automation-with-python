@@ -35,7 +35,7 @@ def main(arguments: list):
             Display this help messages and exit
     """
 
-    filename = os.path.basename(__name__)
+    filename = os.path.basename(__file__)
     if filename in arguments[0]:
         arguments.pop(0) # removing filename -- main.py
     if len(arguments) <= 0:
