@@ -34,7 +34,7 @@ def main(arguments: list):
         .help:
             Display this help messages and exit
     """
-    
+
     filename = os.path.basename(__name__)
     if filename in arguments[0]:
         arguments.pop(0) # removing filename -- main.py
@@ -61,7 +61,8 @@ def main(arguments: list):
             pass
     print("Downloading from GitHub")
     print("This will overide existing files or folder\n[Continue?]")
-    input("")
+    if input("").lower() == 'exit':
+        sys.exit()
     try:
         output = subprocess.check_output("svn export %s %s" % (git_url, getPath), stderr=subprocess.STDOUT)
     except subprocess.CalledProcessError:
