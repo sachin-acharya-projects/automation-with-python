@@ -35,7 +35,10 @@ def main(arguments: list):
             Display this help messages and exit
     """
 
-    arguments.remove(os.path.basename(__name__)) # removing filename -- main.py
+    try:
+        arguments.remove(os.path.basename(__name__)) # removing filename -- main.py
+    except ValueError:
+        print(help_text)
     arguments = list(arguments)
     if arguments.get(".help"):
         print(help_text)
