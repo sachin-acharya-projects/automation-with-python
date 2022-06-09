@@ -4,14 +4,14 @@ class list(list):
     def __init__(self, *args):
         super().__init__(args)
     def get(self, text_):
-        if not text_ in self:
+        if not text_ in self[0]:
             return False
         return True
     def getValue(self, elm, default = False, one_up=True):
-        if not elm in self:
+        if not elm in self[0]:
             return default
-        index = self.index(elm)
-        return self[index] if not one_up else self[index + 1]
+        index = self[0].index(elm)
+        return self[0][index] if not one_up else self[0][index + 1]
 def main(arguments: list):
     help_text = """
     syntax:
@@ -68,6 +68,7 @@ def main(arguments: list):
     try:
         output = subprocess.check_output("svn export %s %s --force" % (git_url, getPath), stderr=subprocess.STDOUT)
     except subprocess.CalledProcessError:
+        #  svn export https://github.com/sachin-acharya-projects/automation-with-python/trunk --force
         print("It seems you have not download Tortoise SVN\nDownload Here: https://tortoisesvn.net/downloads.html")
     if file_path:
         if '.py' in file_path:
