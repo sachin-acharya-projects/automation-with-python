@@ -44,6 +44,9 @@ def main(arguments: list):
         print(help_text)
         sys.exit()
     git_url = arguments[0]
+    if git_url = '':
+        print("URL is required")
+        sys.exit()
     file_path = arguments.getValue("-e")
     getFolder = arguments.get("-f")
     getPath = arguments.getValue("-p", ".")
