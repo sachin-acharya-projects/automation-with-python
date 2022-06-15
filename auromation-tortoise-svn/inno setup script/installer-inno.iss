@@ -29,6 +29,8 @@ SetupIconFile=C:\Users\Lucifer\Downloads\Logos (Folder)\icon.ico
 Compression=lzma
 SolidCompression=yes
 WizardStyle=modern
+
+; Installer for 64 bit
 ArchitecturesInstallIn64BitMode=x64
 
 [Languages]
